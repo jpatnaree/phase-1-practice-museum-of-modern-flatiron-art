@@ -6,9 +6,11 @@ const commentSection = document.getElementById('comments-section');
 const exhibitImage = document.getElementById('exhibit-image');
 const butTicketsButton = document.getElementById('buy-tickets-button');
 const ticketBought = document.getElementById('tickets-bought')
-let counter
+
 const commentForm = document.getElementById('comment-form')
 const commentInput = document.getElementById('comment-form')[0]
+
+let counter = 0
 
 function showArt(artpiece) {
     exhibitTitle.textContent = artpiece.title;
@@ -35,6 +37,7 @@ butTicketsButton.addEventListener('click', () => {
 commentForm.addEventListener('submit', e => {
     e.preventDefault();
     addComment(commentInput.value)
+    commentForm.reset()
 })
 
 fetch('http://localhost:3000/current-exhibits')
@@ -46,8 +49,5 @@ fetch('http://localhost:3000/current-exhibits')
     })
 
 
-    // for (let i = 0; i < artpiece['comments'].length; i++) {
-    //     p += artpiece['comments'][i] + "<br>";
-    //   }
 })
 
